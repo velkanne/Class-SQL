@@ -1,0 +1,102 @@
+CREATE TABLE producto (
+    id_producto NUMBER,
+    nombre VARCHAR2 (100) CONSTRAINT producto_nombre_nn NOT NULL,
+    precio NUMBER CONSTRAINT producto_precio_nn NOT NULL,
+    stock NUMBER,
+    id_categoria NUMBER,
+    CONSTRAINT producto_pk PRIMARY KEY (id_producto)
+);
+
+CREATE TABLE categoria (
+    id_categoria NUMBER,
+    nombre VARCHAR2 (100) CONSTRAINT categoria_nombre_nn NOT NULL,
+    CONSTRAINT categoria_pk PRIMARY KEY (id_categoria)
+);
+
+CREATE TABLE item (
+    id_venta NUMBER NOT NULL,
+    id_producto NUMBER NOT NULL,
+    cantidad NUMBER DEFAULT (1),
+    CONSTRAINT item_pk PRIMARY KEY (id_venta, id_producto)
+);
+
+CREATE TABLE venta (
+    id_venta NUMBER,
+    fecha DATE DEFAULT SYSDATE,
+    descripcion VARCHAR2 (200),
+    rut_cliente VARCHAR2 (10),
+    CONSTRAINT venta_pk PRIMARY KEY (id_venta)
+);
+
+CREATE TABLE cliente (
+    rut_cliente VARCHAR2 (10),
+    nombre VARCHAR2 (100),
+    apellido VARCHAR2 (100) CONSTRAINT cliente_apellido_nn NOT NULL,
+    telefono VARCHAR2 (15),
+    correo VARCHAR2 (50),
+    CONSTRAINT cliente_pk PRIMARY KEY (rut_cliente)
+);
+
+ALTER TABLE producto 
+ADD CONSTRAINT producto_categoria_fk FOREIGN KEY (id_categoria)
+REFERENCES categoria (id_categoria);
+
+ALTER TABLE item 
+ADD CONSTRAINT item_venta_fk FOREIGN KEY (id_venta)
+REFERENCES venta (id_venta);
+
+ALTER TABLE item
+ADD CONSTRAINT item_producto_fk FOREIGN KEY (id_producto)
+REFERENCES producto (id_producto);
+
+ALTER TABLE venta
+ADD CONSTRAINT venta_cliente_fk FOREIGN KEY (rut_cliente)
+REFERENCES cliente (rut_cliente);
+
+INSERT INTO categoria
+VALUES (1, 'ELECTRODOMESTICO');
+
+INSERT INTO categoria
+VALUES (2, 'INFORMATICA')
+
+INSERT INTO categoria 
+VALUES (3, 'HOGAR')
+
+INSERT INTO producto 
+VALUES (1, 'NOTEBOOK XPEPE RYZEN 7', 600000, 30, 2);
+
+INSERT INTO producto
+VALUES (2, 'PANERA', 500, 24, 3);
+
+INSERT INTO producto 
+VALUES (3, 'NEVERA TOUCHSCREEN GAMER', 1200000, 7, 1);
+
+INSERT INTO producto
+VALUES (4, 'MANGUERA JARDIN', 1000, 532, 3);
+
+INSERT INTO producto
+VALUES (5, 'LUCES LED 50M', 4150, 43, 3);
+
+INSERT INTO cliente
+VALUES (112223334, 'Pepe', 'Perez', 977777777, 'correopepe@chile.cl');
+
+INSERT INTO cliente
+VALUES (112223444, 'Pepo', 'Juanez', 988888888, 'correojuanez@chile.cl');
+
+INSERT INTO cliente
+VALUES (112226666, 'Juan', 'Enriquez', 911111111, 'correoenriquez@chile.cl');
+
+COMMIT;
+
+INSERT INTO venta
+VALUES (88, SYSDATE, 'Venta ej.', 112223334);
+
+INSERT INTO item
+VALUES (88, 2, 1);
+
+INSERT INTO item
+VALUES (88, 1, 1);
+
+COMMIT;
+
+UPDATE producto SET precio = precio * 1.02;
