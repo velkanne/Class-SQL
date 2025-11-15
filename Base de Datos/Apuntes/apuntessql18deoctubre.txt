@@ -1,0 +1,30 @@
+- Funciones y expresiones condicionales: NVL, NVL2, NULLIF, CASE, DECODE
+-- NVL evalua una expresion NULL, y la reemplaza por otro valor
+-- NVL (expr, valor)
+SELECT last_name, salary, commission_pct,
+salary * NVL(commission_pct, 0) + salary AS sueldo_mas_comision
+FROM employees;
+-- NVL2(expr1, expr2, expr3) Si expr1 No es NULL, devuelve expr2, caso contrario devuelve expr3
+SELECT last_name, salary, commission_pct,
+NVL2(commission_pct, 'Vendedor', 'Oficinista') AS tipo_empleado
+FROM employees;
+-- NULLIF(expr1, expr2) SI expr1 = expr2, devuelve NULL, caso contrario devuelve expr1
+SELECT first_name, LENGTH(first_name) AS largo_nombre,
+last_name, LENGTH(last_name) AS largo_apellido,
+NULLIF(LENGTH(first_name), LENGTH(last_name)) AS nullif
+FROM employees;
+-- CASE: no es una función, es ANSI SQL
+SELECT last_name, salary, job_id,
+CASE job_id
+WHEN 'IT_PROG' THEN salary * 1.1
+WHEN 'ST_MAN' THEN salary * 1.15
+WHEN 'ST_CLERK' THEN salary * 1.2
+ELSE salary
+END AS aumento
+FROM employees;
+-- DECODE: es una funcion, propia de Oracle
+-- DECODE(col|expr, busqueda1, resultado1, busqueda2, resultado2, ..., default)
+SELECT last_name, salary, job_id,
+DECODE (job_id, 'IT_PROG', salary * 1.1, 'ST_NAME', salary * 1.15,
+'ST_CLERK', salary * 1.2, salary) AS aumento
+FROM employees;
