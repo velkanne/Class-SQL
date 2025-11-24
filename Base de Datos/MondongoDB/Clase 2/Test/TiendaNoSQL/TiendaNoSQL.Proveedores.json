@@ -1,0 +1,53 @@
+[{
+  "_id": {
+    "$oid": "65a1b2c3d4e5f6a7b8c9d0e1"
+  },
+  "nombre": "FentGlobal",
+  "tipo": "Importación/Exportación",
+  "pais_origen": "China",
+  "categorias": [
+    "Químicos",
+    "Suministros Industriales"
+  ],
+  "contacto": {
+    "email": "ventas@fentglobal.com",
+    "telefono": "+86 755 1234 5678"
+  },
+  "activo": true
+},
+{
+  "_id": {
+    "$oid": "65a1b2c3d4e5f6a7b8c9d0e2"
+  },
+  "nombre": "NegroTech",
+  "tipo": "Tecnología",
+  "pais_origen": "Estados Unidos",
+  "categorias": [
+    "Hardware",
+    "Periféricos",
+    "Gaming"
+  ],
+  "contacto": {
+    "email": "b2b@negrotech.com",
+    "telefono": "+1 305 555 0199"
+  },
+  "activo": true
+},
+{
+  "_id": {
+    "$oid": "65a1b2c3d4e5f6a7b8c9d0e3"
+  },
+  "nombre": "Free Tibets",
+  "tipo": "Artesanía y Manofactura",
+  "pais_origen": "India",
+  "categorias": [
+    "Textiles",
+    "Decoración",
+    "Inciensos"
+  ],
+  "contacto": {
+    "email": "peace@freetibets.org",
+    "telefono": "+91 1892 223 344"
+  },
+  "activo": true
+}]

@@ -1,0 +1,63 @@
+[{
+  "_id": 2,
+  "nombre": "Lisa Cuddy",
+  "especialidad": "Endocrinología",
+  "es_jefe": true,
+  "supervisor_id": null
+},
+{
+  "_id": 1,
+  "nombre": "Gregory House",
+  "especialidad": "Nefrología/Infecciosas",
+  "es_jefe": true,
+  "supervisor_id": 2
+},
+{
+  "_id": 3,
+  "nombre": "James Wilson",
+  "especialidad": "Oncología",
+  "es_jefe": false,
+  "supervisor_id": 2
+},
+{
+  "_id": 4,
+  "nombre": "Eric Foreman",
+  "especialidad": "Neurología",
+  "es_jefe": true,
+  "supervisor_id": 1
+},
+{
+  "_id": 5,
+  "nombre": "Allison Cameron",
+  "especialidad": "Inmunología",
+  "es_jefe": false,
+  "supervisor_id": 1
+},
+{
+  "_id": 6,
+  "nombre": "Robert Chase",
+  "especialidad": "Cuidados Intensivos",
+  "es_jefe": false,
+  "supervisor_id": 1
+},
+{
+  "_id": 7,
+  "nombre": "Chris Taub",
+  "especialidad": "Cirugía Plástica",
+  "es_jefe": false,
+  "supervisor_id": 1
+},
+{
+  "_id": 8,
+  "nombre": "Remy Hadley (Thirteen)",
+  "especialidad": "Medicina Interna",
+  "es_jefe": false,
+  "supervisor_id": 1
+},
+{
+  "_id": 9,
+  "nombre": "Lawrence Kutner",
+  "especialidad": "Medicina del Deporte",
+  "es_jefe": false,
+  "supervisor_id": 1
+}]

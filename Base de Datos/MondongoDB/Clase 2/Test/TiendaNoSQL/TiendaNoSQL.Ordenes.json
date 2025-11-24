@@ -1,0 +1,77 @@
+[{
+  "_id": {
+    "$oid": "65d4e5f6a7b8c9d0e1f20001"
+  },
+  "usuario_id": {
+    "$oid": "65c3d4e5f6a7b8c9d0e1f001"
+  },
+  "fecha_orden": {
+    "$date": "2025-10-05T14:30:00.000Z"
+  },
+  "estado": "entregado",
+  "total_compra": 135,
+  "metodo_pago": {
+    "tipo": "Tarjeta de Crédito",
+    "ultimos_4": "4242",
+    "transaccion_id": "TXN-99887766"
+  },
+  "direccion_envio": {
+    "calle": "Av. Providencia 1234",
+    "ciudad": "Santiago",
+    "region": "RM",
+    "codigo_postal": "7500000"
+  },
+  "items": [
+    {
+      "producto_id": {
+        "$oid": "65b2c3d4e5f6a7b8c9d0e015"
+      },
+      "nombre": "Tapiz Mandala Bordado a Mano",
+      "cantidad": 1,
+      "precio_unitario": 120,
+      "subtotal": 120
+    },
+    {
+      "producto_id": {
+        "$oid": "65b2c3d4e5f6a7b8c9d0e009"
+      },
+      "nombre": "Guantes Nitrilo Alta Resistencia",
+      "cantidad": 1,
+      "precio_unitario": 15,
+      "subtotal": 15
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "65d4e5f6a7b8c9d0e1f20002"
+  },
+  "usuario_id": {
+    "$oid": "65c3d4e5f6a7b8c9d0e1f002"
+  },
+  "fecha_orden": {
+    "$date": "2025-11-01T09:15:00.000Z"
+  },
+  "estado": "procesando",
+  "total_compra": 2500,
+  "metodo_pago": {
+    "tipo": "Transferencia Bancaria",
+    "transaccion_id": "WIRE-20251101-005"
+  },
+  "direccion_envio": {
+    "calle": "742 Evergreen Terrace",
+    "ciudad": "Springfield",
+    "pais": "USA"
+  },
+  "items": [
+    {
+      "producto_id": {
+        "$oid": "65b2c3d4e5f6a7b8c9d0e001"
+      },
+      "nombre": "Laptop Gamer Titan X",
+      "cantidad": 2,
+      "precio_unitario": 1250,
+      "subtotal": 2500
+    }
+  ]
+}]

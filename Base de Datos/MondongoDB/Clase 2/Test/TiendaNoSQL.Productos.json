@@ -1,0 +1,223 @@
+[{
+  "_id": {
+    "$oid": "64c1b2d9e4b0a1a2b3c4d5e6"
+  },
+  "sku": "NT-GAM-001",
+  "nombre": "Laptop Gamer Black Edition",
+  "marca": "NegroTech",
+  "categoria": "Portátiles",
+  "precio": {
+    "$numberInt": "1850"
+  },
+  "stock": {
+    "$numberInt": "12"
+  },
+  "disponible": true,
+  "tags": [
+    "gaming",
+    "rtx",
+    "rgb",
+    "alto rendimiento"
+  ],
+  "especificaciones": {
+    "procesador": "AMD Ryzen 9",
+    "ram": "32GB DDR5",
+    "almacenamiento": {
+      "principal": "1TB SSD NVMe",
+      "secundario": "2TB HDD"
+    },
+    "pantalla": "15.6 pulgadas 144Hz",
+    "color": "Negro Mate"
+  },
+  "fecha_ingreso": {
+    "$date": {
+      "$numberLong": "1759305600000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "64c1b2d9e4b0a1a2b3c4d5e7"
+  },
+  "sku": "NT-ACC-055",
+  "nombre": "Teclado Mecánico Silent",
+  "marca": "Logitech",
+  "categoria": "Periféricos",
+  "precio": {
+    "$numberDouble": "120.5"
+  },
+  "stock": {
+    "$numberInt": "50"
+  },
+  "disponible": true,
+  "tags": [
+    "oficina",
+    "silencioso",
+    "inalámbrico"
+  ],
+  "especificaciones": {
+    "tipo_switch": "Cherry MX Red",
+    "idioma": "Español ISO",
+    "conectividad": [
+      "Bluetooth",
+      "USB-C"
+    ],
+    "iluminacion": "Blanca"
+  },
+  "fecha_ingreso": {
+    "$date": {
+      "$numberLong": "1763217000000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "691c8dc541b12a84c93f6c20"
+  },
+  "$match": {
+    "disponible": true
+  }
+},
+{
+  "_id": {
+    "$oid": "691c8dc541b12a84c93f6c21"
+  },
+  "$group": {
+    "_id": "$categoria",
+    "total_referencias": {
+      "$sum": {
+        "$numberInt": "1"
+      }
+    },
+    "unidades_stock": {
+      "$sum": "$stock"
+    },
+    "valoracion_total": {
+      "$sum": {
+        "$multiply": [
+          "$precio",
+          "$stock"
+        ]
+      }
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "691c8dc541b12a84c93f6c22"
+  },
+  "$project": {
+    "categoria": "$_id",
+    "unidades_stock": {
+      "$numberInt": "1"
+    },
+    "valoracion_total": {
+      "$numberInt": "1"
+    },
+    "_id": {
+      "$numberInt": "0"
+    },
+    "estado": {
+      "$cond": {
+        "if": {
+          "$gte": [
+            "$valoracion_total",
+            {
+              "$numberInt": "5000"
+            }
+          ]
+        },
+        "then": "Alta Prioridad",
+        "else": "Estándar"
+      }
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "691c8dc541b12a84c93f6c23"
+  },
+  "$sort": {
+    "valoracion_total": {
+      "$numberInt": "-1"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "64c1b2d9e4b0a1a2b3c4d5f1"
+  },
+  "nombre": "Carlos Méndez",
+  "email": "carlos.mendez@email.com",
+  "password_hash": "scrypt:32768:8:1:...",
+  "rol": "cliente",
+  "direcciones": [
+    {
+      "tipo": "envio",
+      "calle": "Av. Tecnológica 123",
+      "ciudad": "Santiago",
+      "codigo_postal": "8320000",
+      "predeterminada": true
+    },
+    {
+      "tipo": "facturacion",
+      "calle": "Calle Los Alerces 45",
+      "ciudad": "Santiago",
+      "codigo_postal": "8320000",
+      "predeterminada": false
+    }
+  ],
+  "carrito_compras": [
+    {
+      "producto_id": {
+        "$oid": "64c1b2d9e4b0a1a2b3c4d5e7"
+      },
+      "cantidad": {
+        "$numberInt": "2"
+      },
+      "fecha_agregado": {
+        "$date": {
+          "$numberLong": "1763458200000"
+        }
+      }
+    }
+  ],
+  "historial_ordenes": [
+    {
+      "orden_id": {
+        "$oid": "64c1b2d9e4b0a1a2b3c4d6a1"
+      },
+      "fecha": {
+        "$date": {
+          "$numberLong": "1760536800000"
+        }
+      },
+      "total": {
+        "$numberInt": "1850"
+      },
+      "estado": "entregado"
+    }
+  ],
+  "fecha_registro": {
+    "$date": {
+      "$numberLong": "1715335200000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "64c1b2d9e4b0a1a2b3c4d5f2"
+  },
+  "nombre": "Admin Sistema",
+  "email": "admin@negrotech.com",
+  "password_hash": "scrypt:32768:8:1:...",
+  "rol": "administrador",
+  "direcciones": [],
+  "carrito_compras": [],
+  "historial_ordenes": [],
+  "fecha_registro": {
+    "$date": {
+      "$numberLong": "1672531200000"
+    }
+  }
+}]
